@@ -1,28 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import * as S from "./styled";
 import useGithub from "../../hooks/github-hooks";
+import Menu from "../menu";
+import SocialButtons from "../social-buttons";
+import Titles from "../menu/titles/index";
 
 const Header = () => {
-  const { getUser } = useGithub();
-  const [usernameForSearch, setUsernameForSearch] = useState();
 
-  const submitGetUser = () => {
-    if (!usernameForSearch) return;
-    return getUser(usernameForSearch);
-  };
 
-  return (
+  return ( 
     <header>
-      <S.Wrapper>
-        <input
-          type="text"
-          placeholder="Digite o username para pesquisa..."
-          onChange={(event) => setUsernameForSearch(event.target.value)}
-        />
-        <button type="submit" onClick={submitGetUser}>
-          <span>Buscar</span>
-        </button>
-      </S.Wrapper>
+      <div className="header">
+        <Menu></Menu>
+      </div>        
+      <Titles></Titles>
+      <SocialButtons></SocialButtons>
     </header>
   );
 };
